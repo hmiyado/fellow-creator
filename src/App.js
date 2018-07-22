@@ -62,7 +62,6 @@ class App extends Component {
       <Section>
         <Container>
         <Title isSize={1}>SW2.5 フェロー作成フォーム</Title>
-        <form onSubmit={this.onSubmit()}>
           <Field isHorizontal>
             <FieldLabel><Label>レベル</Label></FieldLabel>
             <FieldBody>
@@ -149,9 +148,8 @@ class App extends Component {
           </Field>
           { actions }
           <Field>
-            <Control><Button>作成</Button></Control>
+            <Control><Button onClick={this.onSubmit}>作成</Button></Control>
           </Field>
-        </form>
       </Container>
       </Section>
     );
