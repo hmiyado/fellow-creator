@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { 
-  Tile, Box, Tag, Field, Label, Control, Input, FieldLabel, FieldBody, TextArea, Select, Container, Button, Content
+  Tile, Box, Tag, Field, Label, Control, Input, FieldLabel, FieldBody, TextArea, Select, Container, Button, Content, Table
 } from 'bloomer';
 import 'bulma/css/bulma.css';
 import { FellowTemplate } from '../FellowTemplate.js';
@@ -81,6 +81,16 @@ export class FellowForm extends Component {
     }
 
     createFellow() {
+        const actions = [];
+        [7,8,9,10].forEach( rolled => {
+            actions.push(<tr>
+                <td>{rolled}</td>                
+                <td>{this.state.actions[`rolled${rolled}`].action}</td>
+                <td>{this.state.actions[`rolled${rolled}`].line}</td>
+                <td>{this.state.actions[`rolled${rolled}`].total}</td>
+                <td>{this.state.actions[`rolled${rolled}`].effect}</td>
+            </tr>);
+        });
         const fellow = (<FellowTemplate 
                 level = { () => (
                     <Content>
@@ -154,7 +164,16 @@ export class FellowForm extends Component {
                         { this.state.requirePay }
                     </Content>                
                 )}
-                actions = { () => <div />}
+                actions = { () => (<Table isFullWidth>
+                    <thead>
+                        <tr>
+                            <td>想定出目</td><td>行動</td><td>台詞</td><td>達成値</td><td>効果</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {actions}
+                    </tbody>
+                    </Table>)}
                 image = { () => (
                     <Content>
                         <Label><Tag isColor='white'>似顔絵など</Tag></Label>
