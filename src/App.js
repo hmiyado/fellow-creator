@@ -15,7 +15,9 @@ class App extends Component {
       <Section>
         <Container>
           <Title isSize={1}>SW2.5 フェロー作成フォーム</Title>
-          <FellowForm />
+          <div id='fellow'>
+            <FellowForm />
+          </div>
         </Container>
       </Section>
     );

@@ -5,6 +5,7 @@
   "dependencies": {
     "bloomer": "^0.6.3",
     "bulma": "^0.7.1",
+    "dom-to-image": "^2.6.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"

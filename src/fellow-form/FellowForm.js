@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { 
-  Tile, Box, Tag, Field, Label, Control, Input, FieldLabel, FieldBody, TextArea, Select, Container, Button
+  Tile, Box, Tag, Field, Label, Control, Input, FieldLabel, FieldBody, TextArea, Select, Container, Button, Content
 } from 'bloomer';
 import 'bulma/css/bulma.css';
-import { FellowTemplate } from '../FellowTemplate.js'
+import { FellowTemplate } from '../FellowTemplate.js';
+import domToImage from 'dom-to-image';
 
 export class FellowForm extends Component {
   constructor() {
@@ -79,6 +81,101 @@ export class FellowForm extends Component {
     }
 
     createFellow() {
+        const fellow = (<FellowTemplate 
+                level = { () => (
+                    <Content>
+                        <Label><Tag isColor='white'>レベル</Tag></Label>
+                        { this.state.level }
+                    </Content>                
+                )}
+                characterName={ () => (
+                    <Content>
+                        <Label><Tag isColor='white'>名前</Tag></Label>
+                        { this.state.characterName }
+                    </Content>
+                )}
+                playerName={ () => (
+                    <Content >
+                        <Label><Tag isColor='white'>プレイヤー名</Tag></Label>
+                        { this.state.playerName }
+                    </Content>
+                )}
+                species={ () => (
+                    <Content >
+                        <Label><Tag isColor='white'>種族</Tag></Label>
+                        { this.state.species }
+                    </Content>                
+                )}
+                sex={ () => (
+                    <Content >
+                        <Label><Tag isColor='white'>性別</Tag></Label>
+                        { this.state.sex }
+                    </Content>
+                )}
+                age={ () => (
+                    <Content >
+                        <Label><Tag isColor='white'>年齢</Tag></Label>
+                        { this.state.age }
+                    </Content>
+                )}
+                skills={ () => (
+                    <Content>
+                        <Label><Tag isColor='white'>技能</Tag></Label>
+                        { this.state.skills }
+                    </Content>
+                )}
+                languages={ () => (
+                    <Content>
+                        <Label><Tag isColor='white'>言語</Tag></Label>
+                        { this.state.languages }
+                    </Content>   
+                )}
+                selfIntroduction={ () => (
+                    <Content>
+                        <Label><Tag isColor='white'>自己紹介</Tag></Label>
+                        { this.state.selfIntroduction }
+                    </Content>                
+                )}
+                manaPoint={ () => (
+                    <Content >
+                        <Label><Tag isColor='white'>MP</Tag></Label>
+                        { this.state.manaPoint }
+                    </Content>                
+                )}
+                requireExps={ () => (
+                    <Content>
+                        <Label><Tag isColor='white'>経験点</Tag></Label>
+                        { this.state.requireExps }
+                    </Content>                
+                )}
+                requirePay={ () => (
+                    <Content>
+                        <Label><Tag isColor='white'>報酬</Tag></Label>
+                        { this.state.requirePay }
+                    </Content>                
+                )}
+                actions = { () => <div />}
+                image = { () => (
+                    <Content>
+                        <Label><Tag isColor='white'>似顔絵など</Tag></Label>
+                        画像
+                    </Content>                             
+                )}
+                note = { () => (
+                    <Content>
+                        <Label><Tag isColor='white'>備考</Tag></Label>
+                        { this.state.note }
+                    </Content>                
+                )}
+            />);
+        ReactDOM.render(fellow, document.getElementById('fellow'), () => {
+            domToImage.toPng(document.getElementById('fellow'))
+            .then( dataUrl => {
+                var img = new Image();
+                img.src = dataUrl;
+                document.body.appendChild(img);
+            });
+        });
         console.log(this.state);
     }
 
@@ -115,7 +212,7 @@ export class FellowForm extends Component {
         return (
         <Container>
         <FellowTemplate 
-            level={props => (
+            level={ () => (
                 <Field>
                     <Label><Tag isColor='white'>レベル</Tag></Label>
                     <Control><Input type='number' name='level' value={this.state.level} onChange={this.handleInputChange}/></Control>
