@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-  Tile, Box, Tag, Field, Label, Control, Input, FieldLabel, FieldBody, TextArea, Select
+  Tile, Box, Tag, Field, Label, Control, Input, FieldLabel, FieldBody, TextArea, Select, Container, Button
 } from 'bloomer';
 import 'bulma/css/bulma.css';
 import { FellowTemplate } from '../FellowTemplate.js'
@@ -81,6 +81,7 @@ export class FellowForm extends Component {
     createFellow() {
         console.log(this.state);
     }
+
     render() {
         var actions = [];
         [7,8,9,10].forEach((rolled) => {
@@ -111,7 +112,9 @@ export class FellowForm extends Component {
         </Field>);
         });
 
-        return (<FellowTemplate 
+        return (
+        <Container>
+        <FellowTemplate 
             level={props => (
                 <Field>
                     <Label><Tag isColor='white'>レベル</Tag></Label>
@@ -223,6 +226,8 @@ export class FellowForm extends Component {
                     <Control><TextArea name='note' onChange={this.handleInputChange}/></Control>
                 </Field>                
             )}
-        />);
+        />
+        <Button onClick={this.createFellow}>作成</Button>
+        </Container>);
     }
 }

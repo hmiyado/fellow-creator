@@ -16,7 +16,6 @@ class App extends Component {
         <Container>
           <Title isSize={1}>SW2.5 フェロー作成フォーム</Title>
           <FellowForm />
-          <Button onClick={this.createFellow}>作成</Button>
         </Container>
       </Section>
     );
