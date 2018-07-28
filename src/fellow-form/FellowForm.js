@@ -21,9 +21,9 @@ export class FellowForm extends Component {
       languages: "",
       selfIntroduction: "",
       manaPoint: 0,
+      requireReport: false,
       requireExps: false,
       requirePay: false,
-      note: "",
       image: "",
       actions: {
         rolled7: {
@@ -94,7 +94,6 @@ export class FellowForm extends Component {
         const fellow = (<FellowTemplate 
                 level = { () => (
                     <Content>
-                        <Label><Tag isColor='white'>レベル</Tag></Label>
                         { this.state.level }
                     </Content>                
                 )}
@@ -180,12 +179,6 @@ export class FellowForm extends Component {
                         画像
                     </Content>                             
                 )}
-                note = { () => (
-                    <Content>
-                        <Label><Tag isColor='white'>備考</Tag></Label>
-                        { this.state.note }
-                    </Content>                
-                )}
             />);
         ReactDOM.render(fellow, document.getElementById('fellow'), () => {
             domToImage.toPng(document.getElementById('fellow'))
@@ -201,27 +194,26 @@ export class FellowForm extends Component {
     render() {
         var actions = [];
         [7,8,9,10].forEach((rolled) => {
-        actions.push(<Field isHorizontal>
-            <Label><Tag isColor='white'> { rolled }</Tag></Label>
+        actions.push(<Field isHorizontal style={{marginBottom: "0"}}>
             <FieldBody>
             <Field>
                 <Control>
-                <Input type='text' name='action' placeholder="行動" onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
+                <Input type='text' name='action' style={{fontSize: "0.5rem"}}  placeholder="行動" onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
                 </Control>
             </Field>
             <Field>
                 <Control>
-                <Input type='text' name='lines' placeholder="台詞"  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
+                <Input type='text' name='lines' style={{fontSize: "0.5rem"}} placeholder="台詞"  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
+                </Control>
+            </Field>
+            <Field style={{width: 40}}>
+                <Control>
+                <Input type='number' name='total' style={{fontSize: "0.5rem", width: 40}}  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
                 </Control>
             </Field>
             <Field>
                 <Control>
-                <Input type='number' name='total' placeholder="達成値"  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
-                </Control>
-            </Field>
-            <Field>
-                <Control>
-                <Input type='text' name='effect' placeholder="効果"  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
+                <Input type='text' name='effect' style={{fontSize: "0.5rem"}}  placeholder="効果"  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
                 </Control>
             </Field>
             </FieldBody>
@@ -232,115 +224,56 @@ export class FellowForm extends Component {
         <Container>
         <FellowTemplate 
             level={ () => (
-                <Field>
-                    <Label><Tag isColor='white'>レベル</Tag></Label>
-                    <Control><Input type='number' name='level' value={this.state.level} onChange={this.handleInputChange}/></Control>
-                </Field>
+                <Input type='number' name='level' isSize="small" value={this.state.level} onChange={this.handleInputChange}/>
             )}
             characterName={ () => (
-                <Field isHorizontal>
-                    <Label><Tag isColor='white'>名前</Tag></Label>
-                    <FieldBody>
-                        <Control style={ {width: '100%'} }><Input type='text' name='characterName' onChange={this.handleInputChange}/></Control>
-                    </FieldBody>
-                </Field>
+                <Input type='text' name='characterName' isSize="small" onChange={this.handleInputChange}/>
             )}
             playerName={ () => (
-                <Field isHorizontal>
-                    <Label><Tag isColor='white'>プレイヤー名</Tag></Label>
-                    <FieldBody>
-                    <Control style={ {width: '100%'} }><Input type='text' name='playerName' onChange={this.handleInputChange}/></Control>
-                    </FieldBody>
-                </Field>
+                <Input type='text' name='playerName' style={{fontSize: "0.5rem"}} onChange={this.handleInputChange}/>
             )}
             species={ () => (
-                <Field isHorizontal>
-                    <Label><Tag isColor='white'>種族</Tag></Label>
-                    <FieldBody>
-                    <Control style={ {width: '100%'} }><Input type='text' name='species' onChange={this.handleInputChange}/></Control>
-                    </FieldBody>
-                </Field>                
+                <Input type='text' name='species' style={{fontSize: "0.5rem"}} onChange={this.handleInputChange}/>
             )}
             sex={ () => (
-                <Field isHorizontal>
-                    <Label><Tag isColor='white'>性別</Tag></Label>
-                    <FieldBody>
-                    <Control style={ {width: '100%'} }><Input type='text' name='sex' onChange={this.handleInputChange}/></Control>
-                    </FieldBody>
-                </Field>
+                <Input type='text' name='sex' style={{fontSize: "0.5rem"}} onChange={this.handleInputChange} />
             )}
             age={ () => (
-                <Field isHorizontal>
-                    <Label><Tag isColor='white'>年齢</Tag></Label>
-                    <FieldBody>
-                    <Control style={ {width: '100%'} }><Input type='text' name='age' onChange={this.handleInputChange}/></Control>
-                    </FieldBody>
-                </Field>
+                <Input type='text' name='age' style={{fontSize: "0.5rem"}} onChange={this.handleInputChange} />
             )}
             skills={ () => (
-                <Field>
-                    <Label><Tag isColor='white'>技能</Tag></Label>
-                    <Control><TextArea name='skills' onChange={this.handleInputChange}/></Control>
-                </Field>
+                <TextArea name='skills' style={{fontSize: "0.5rem", resize: "none"}} rows={3} onChange={this.handleInputChange} />
             )}
             languages={ () => (
-                <Field>
-                    <Label><Tag isColor='white'>言語</Tag></Label>
-                    <Control><TextArea name='languages' onChange={this.handleInputChange}/></Control>
-                </Field>   
+                <TextArea name='languages' style={{fontSize: "0.5rem", resize: "none"}} rows={3} onChange={this.handleInputChange}/>
             )}
             selfIntroduction={ () => (
-                <Field>
-                    <Label><Tag isColor='white'>自己紹介</Tag></Label>
-                    <Control><TextArea name='selfIntroduction' onChange={this.handleInputChange}/></Control>
-                </Field>                
+                <TextArea name='selfIntroduction'  style={{fontSize: "0.5rem", resize: "none"}} rows={3} onChange={this.handleInputChange}/>
             )}
             manaPoint={ () => (
-                <Field isHorizontal>
-                    <Label><Tag isColor='white'>MP</Tag></Label>
-                    <FieldBody>
-                    <Control><Input type='number' name='manaPoint' onChange={this.handleInputChange}/></Control>
-                    </FieldBody>
-                </Field>                
+                <Input type='number' name='manaPoint' isSize="small" onChange={this.handleInputChange}/>
+            )}
+            requireReport={ () => (
+                <Select name='requireReport' isSize="small" style={{fontSize: "0.5rem"}} value={this.state.requireReport} onChange={this.handleInputChange}>
+                <option value={true}>必要</option>
+                <option value={false}>不要</option>                
+                </Select>
             )}
             requireExps={ () => (
-                <Field isHorizontal>
-                    <Label><Tag isColor='white'>経験点</Tag></Label>
-                    <FieldBody>
-                    <Control>
-                    <Select name='requireExps' value={this.state.requireExps} onChange={this.handleInputChange}>
-                    <option value={true}>必要</option>
-                    <option value={false}>不要</option>                
-                    </Select>
-                    </Control>
-                    </FieldBody>
-                </Field>                
+                <Select name='requireExps' isSize="small" style={{fontSize: "0.5rem"}} value={this.state.requireExps} onChange={this.handleInputChange}>
+                <option value={true}>必要</option>
+                <option value={false}>不要</option>                
+                </Select>
             )}
             requirePay={ () => (
-                <Field isHorizontal>
-                    <Label><Tag isColor='white'>報酬</Tag></Label>
-                    <FieldBody>
-                    <Control>
-                    <Select name='requirePay' value={this.state.requirePay} onChange={this.handleInputChange}>
-                    <option value="true">はい</option>
-                    <option value="false">いいえ</option>                
-                    </Select>
-                    </Control>
-                    </FieldBody>
-                </Field>                
+                <Select name='requirePay' isSize="small" style={{fontSize: "0.5rem"}} value={this.state.requirePay} onChange={this.handleInputChange}>
+                <option value="true">必要</option>
+                <option value="false">不要</option>                
+                </Select>
             )}
             actions = { () => actions}
             image = { () => (
-                <Field>
-                    <Label><Tag isColor='white'>似顔絵など</Tag></Label>
-                    <Control><Input type='file' accept="image/*" name='image' onChange={this.handleInputChange}/></Control>
-                </Field>                                
-            )}
-            note = { () => (
-                <Field>
-                    <Label><Tag isColor='white'>備考</Tag></Label>
-                    <Control><TextArea name='note' onChange={this.handleInputChange}/></Control>
-                </Field>                
+                <Input type='file' accept="image/*" name='image'isSize="small" style={{fontSize: "0.5rem"}} onChange={this.handleInputChange}/>
             )}
         />
         <Button onClick={this.createFellow}>作成</Button>
