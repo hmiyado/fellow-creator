@@ -194,7 +194,7 @@ export class FellowForm extends Component {
     render() {
         var actions = [];
         [7,8,9,10].forEach((rolled) => {
-        actions.push(<Field isHorizontal style={{marginBottom: "0"}}>
+        actions.push(<Field isHorizontal style={{marginBottom: "0.1rem"}}>
             <FieldBody>
             <Field>
                 <Control>
@@ -206,9 +206,9 @@ export class FellowForm extends Component {
                 <Input type='text' name='lines' style={{fontSize: "0.5rem"}} placeholder="台詞"  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
                 </Control>
             </Field>
-            <Field style={{width: 40}}>
+            <Field style={{width: 40, flexGrow: 0}}>
                 <Control>
-                <Input type='number' name='total' style={{fontSize: "0.5rem", width: 40}}  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
+                <Input type='number' name='total' style={{fontSize: "0.5rem"}}  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
                 </Control>
             </Field>
             <Field>
