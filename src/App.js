@@ -6,9 +6,8 @@ import {
   Button
 } from 'bloomer';
 import 'bulma/css/bulma.css';
-import { FellowTemplate } from './FellowTemplate.js';
-import { FellowForm } from './fellow-form/FellowForm.js';
-import { FellowResult } from './FellowResult.js';
+import FellowFormContainer from './containers/FellowFormContainer';
+import { FellowResult } from './components/FellowResult';
 
 class App extends Component {
   render() {
@@ -16,7 +15,7 @@ class App extends Component {
       <Section>
         <Container>
           <Title isSize={1}>SW2.5 フェロー作成フォーム</Title>
-          <FellowForm />
+          <FellowFormContainer />
           <FellowResult />
         </Container>
       </Section>
