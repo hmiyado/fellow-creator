@@ -8,16 +8,29 @@ export default class FellowPreview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      templateImage: null
+      templateImage: null,
+      portraitImage: new window.Image()
     };
   }
 
   componentDidMount() {
-    const imageElement = new window.Image();
-    imageElement.src = fellowTemplateImage;
-    imageElement.onload = () => {
-      this.setState({ templateImage: imageElement });
+    const templateImageElement = new window.Image();
+    templateImageElement.src = fellowTemplateImage;
+    templateImageElement.onload = () => {
+      this.setState({ templateImage: templateImageElement });
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.portrait !== '' &&
+      this.props.portrait !== prevProps.portrait
+    ) {
+      this.state.portraitImage.src = this.props.portrait;
+      this.state.portraitImage.onload = () => {
+        this.portraitImageNode.getLayer().batchDraw();
+      };
+    }
   }
 
   render() {
@@ -121,6 +134,15 @@ export default class FellowPreview extends Component {
             text={this.props.languages}
             align="left"
             fontSize={20}
+          />
+          <Image
+            ref={node => (this.portraitImageNode = node)}
+            x={405}
+            y={30}
+            visible={this.props.portrait !== ''}
+            width={170}
+            height={80}
+            image={this.state.portraitImage}
           />
           <Text
             x={400}

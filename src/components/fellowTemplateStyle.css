@@ -75,7 +75,7 @@
     width: 60px;
 }
 
-.imageContainer {
+.portraitContainer {
     z-index: 2;
     position: absolute;
     top: 45px;
