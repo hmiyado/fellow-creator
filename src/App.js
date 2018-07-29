@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { 
-  Section, 
-  Container,
-  Title,
-  Button
-} from 'bloomer';
+import { Section, Container, Title, Button } from 'bloomer';
 import 'bulma/css/bulma.css';
 import FellowFormContainer from './containers/FellowFormContainer';
-import { FellowResult } from './components/FellowResult';
+import FellowPreviewContainer from './containers/FellowPreviewContainer';
 
 class App extends Component {
   render() {
@@ -16,7 +11,7 @@ class App extends Component {
         <Container>
           <Title isSize={1}>SW2.5 フェロー作成フォーム</Title>
           <FellowFormContainer />
-          <FellowResult />
+          <FellowPreviewContainer />
         </Container>
       </Section>
     );
