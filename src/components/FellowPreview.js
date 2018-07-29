@@ -77,8 +77,6 @@ export default class FellowPreview extends Component {
       <Stage width={595} height={420}>
         <Layer>
           <Image image={this.state.templateImage} />
-        </Layer>
-        <Layer>
           <Text
             x={25}
             y={40}
