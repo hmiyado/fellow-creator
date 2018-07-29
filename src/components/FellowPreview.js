@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Stage, Layer, Image, Text } from 'react-konva';
+import { Stage, Layer, Image, Text, Group } from 'react-konva';
 import Konva from 'konva';
 import fellowTemplateImage from './fellow-template.svg';
 
@@ -21,6 +21,45 @@ export default class FellowPreview extends Component {
   }
 
   render() {
+    var actions = [];
+    [7, 8, 9, 10].forEach((rolled, index) => {
+      const key = `rolled${rolled}`;
+      const action = this.props.fellowActions[key];
+      actions.push(
+        <Group y={25 * index} height={25}>
+          <Text
+            height={25}
+            text={action.fellowAction}
+            width={135}
+            fontSize={12}
+          />
+          <Text
+            x={147}
+            height={25}
+            width={135}
+            text={action.line}
+            fontSize={12}
+          />
+          <Text
+            x={295}
+            y={5}
+            width={30}
+            height={25}
+            align="center"
+            text={action.total.toString()}
+            fontSize={15}
+          />
+          <Text
+            x={340}
+            height={25}
+            width={135}
+            text={action.effect}
+            fontSize={12}
+          />
+        </Group>
+      );
+    });
+
     return (
       <Stage width={595} height={420}>
         <Layer>
@@ -128,6 +167,9 @@ export default class FellowPreview extends Component {
             align="left"
             fontSize={12}
           />
+          <Group x={100} y={300} width={480}>
+            {actions}
+          </Group>
         </Layer>
       </Stage>
     );
