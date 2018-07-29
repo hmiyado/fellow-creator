@@ -8,6 +8,7 @@ import {
 import 'bulma/css/bulma.css';
 import { FellowTemplate } from './FellowTemplate.js';
 import { FellowForm } from './fellow-form/FellowForm.js';
+import { FellowResult } from './FellowResult.js';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <Container>
           <Title isSize={1}>SW2.5 フェロー作成フォーム</Title>
           <FellowForm />
+          <FellowResult />
         </Container>
       </Section>
     );
