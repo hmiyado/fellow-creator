@@ -12,7 +12,11 @@ import {
     updateManaPoint,
     updateRequireReport,
     updateRequireExps,
-    updateRequirePay
+    updateRequirePay,
+    updateFellowAction,
+    updateLine,
+    updateTotal,
+    updateEffect
  } from '../actions'
 import FellowForm from '../components/FellowForm'
 
@@ -34,7 +38,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onManaPointChange: manaPoint => dispatch(updateManaPoint(Number.parseInt(manaPoint))),
         onRequireReportChange: requireReport => dispatch(updateRequireReport(requireReport.toLowerCase()==='true')),
         onRequireExpsChange: requireExps => dispatch(updateRequireExps(requireExps.toLowerCase()==='true')),
-        onRequirePayChange: requirePay => dispatch(updateRequirePay(requirePay.toLowerCase()==='true'))
+        onRequirePayChange: requirePay => dispatch(updateRequirePay(requirePay.toLowerCase()==='true')),
+        onFellowActionChange: (result, fellowAction) => dispatch(updateFellowAction(result, fellowAction)),
+        onLineChange: (result, line) => dispatch(updateLine(result, line)),
+        onTotalChange: (result, total) => dispatch(updateTotal(result, Number.parseInt(total))),
+        onEffectChange: (result, effect) => dispatch(updateEffect(result, effect))
     }
 }
 

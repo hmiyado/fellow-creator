@@ -1,4 +1,6 @@
-import { combineReducers } from 'redux'
+import {
+    combineReducers
+} from 'redux'
 import {
     UPDATE_LEVEL,
     UPDATE_PLAYER_NAME,
@@ -12,15 +14,19 @@ import {
     UPDATE_MANA_POINT,
     UPDATE_REQUIRE_REPORT,
     UPDATE_REQUIRE_EXPS,
-    UPDATE_REQUIRE_PAY
+    UPDATE_REQUIRE_PAY,
+    UPDATE_FELLOW_ACTION,
+    UPDATE_LINE,
+    UPDATE_TOTAL,
+    UPDATE_EFFECT
 } from './actions.js';
 
 function simpleValue(
-    initialValue, 
-    actionType, 
+    initialValue,
+    actionType,
     key) {
-    return (state=initialValue, action) => {
-        switch(action.type) {
+    return (state = initialValue, action) => {
+        switch (action.type) {
             case actionType:
                 return action[key];
             default:
@@ -42,6 +48,75 @@ const manaPoint = simpleValue(0, UPDATE_MANA_POINT, 'manaPoint');
 const requireReport = simpleValue(false, UPDATE_REQUIRE_REPORT, 'requireReport');
 const requireExps = simpleValue(false, UPDATE_REQUIRE_EXPS, 'requireExps');
 const requirePay = simpleValue(false, UPDATE_REQUIRE_PAY, 'requirePay');
+const fellowActions = (state = {
+    rolled7: {
+        fellowAction: "",
+        line: "",
+        total: 0,
+        effect: ""
+    },
+    rolled8: {
+        fellowAction: "",
+        line: "",
+        total: 0,
+        effect: ""
+    },
+    rolled9: {
+        fellowAction: "",
+        line: "",
+        total: 0,
+        effect: ""
+    },
+    rolled10: {
+        fellowAction: "",
+        line: "",
+        total: 0,
+        effect: ""
+    }
+}, action) => {
+    if ([UPDATE_FELLOW_ACTION, UPDATE_LINE, UPDATE_TOTAL, UPDATE_EFFECT].indexOf(action.type) < 0) {
+        return state
+    }
+    const key = `rolled${action.result}`
+    const fellowAction = state[key]
+
+    switch (action.type) {
+        case UPDATE_FELLOW_ACTION:
+            return Object.assign({}, state, {
+                ...state,
+                [key]: {
+                    ...fellowAction,
+                    fellowAction: action.fellowAction
+                }
+            })
+        case UPDATE_LINE:
+            return Object.assign({},state, {
+                ...state,
+                [key]: {
+                    ...fellowAction,
+                    line: action.line
+                }
+            })
+        case UPDATE_TOTAL:
+            return Object.assign({}, state, {
+                ...state,
+                [key]: {
+                    ...fellowAction,
+                    total: action.total
+                }
+            })
+        case UPDATE_EFFECT:
+            return Object.assign({}, state, {
+                ...state,
+                [key]: {
+                    ...fellowAction,
+                    effect: action.effect
+                }
+            })
+        default:
+            return state
+    }
+}
 
 export default combineReducers({
     level,
@@ -56,5 +131,6 @@ export default combineReducers({
     manaPoint,
     requireReport,
     requireExps,
-    requirePay
+    requirePay,
+    fellowActions
 });

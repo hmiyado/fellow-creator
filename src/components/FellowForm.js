@@ -20,7 +20,11 @@ const FellowForm = ({
     manaPoint, onManaPointChange,
     requireReport, onRequireReportChange,
     requireExps, onRequireExpsChange,
-    requirePay, onRequirePayChange
+    requirePay, onRequirePayChange,
+    onFellowActionChange,
+    onLineChange,
+    onTotalChange,
+    onEffectChange
 }) => {
     function createFellow() {
         const actions = [];
@@ -139,22 +143,34 @@ const FellowForm = ({
         <FieldBody>
         <Field>
             <Control>
-            <Input type='text' name='action' style={{fontSize: "0.5rem"}}  placeholder="行動" onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
+            <Input 
+            type='text'
+            style={{fontSize: "0.5rem"}}  
+            onChange={ e => onFellowActionChange(rolled, e.target.value)}/>
             </Control>
         </Field>
         <Field>
             <Control>
-            <Input type='text' name='lines' style={{fontSize: "0.5rem"}} placeholder="台詞"  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
+            <Input 
+            type='text' 
+            style={{fontSize: "0.5rem"}} 
+            onChange={ e => onLineChange(rolled, e.target.value)}/>
             </Control>
         </Field>
         <Field style={{width: 40, flexGrow: 0}}>
             <Control>
-            <Input type='number' name='total' style={{fontSize: "0.5rem"}}  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
+            <Input 
+            type='number' 
+            style={{fontSize: "0.5rem"}}  
+            onChange={ e => onTotalChange(rolled, e.target.value)}/>
             </Control>
         </Field>
         <Field>
             <Control>
-            <Input type='text' name='effect' style={{fontSize: "0.5rem"}}  placeholder="効果"  onChange={ event => this.handleActionChange(`rolled${rolled}`, event)}/>
+            <Input 
+            type='text' 
+            style={{fontSize: "0.5rem"}} 
+            onChange={ e => onEffectChange(rolled, e)}/>
             </Control>
         </Field>
         </FieldBody>

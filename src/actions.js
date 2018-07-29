@@ -11,6 +11,10 @@ export const UPDATE_MANA_POINT = 'UPDATE_MANA_POINT';
 export const UPDATE_REQUIRE_REPORT = 'UPDATE_REQUIRE_REPORT';
 export const UPDATE_REQUIRE_EXPS = 'UPDATE_REQUIRE_EXPS';
 export const UPDATE_REQUIRE_PAY = 'UPDATE_REQUIRE_PAY';
+export const UPDATE_FELLOW_ACTION = 'UPDATE_FELLOW_ACTION';
+export const UPDATE_LINE = 'UPDATE_LINE';
+export const UPDATE_TOTAL = 'UPDATE_TOTAL';
+export const UPDATE_EFFECT = 'UPDATE_EFFECT';
 
 export function updateLevel(level) {
     return {
@@ -98,4 +102,36 @@ export function updateRequirePay(requirePay) {
         type: UPDATE_REQUIRE_PAY,
         requirePay
     }    
+}
+
+export function updateFellowAction(result, fellowAction) {
+    return {
+        type: UPDATE_FELLOW_ACTION,
+        result,
+        fellowAction
+    }
+}
+
+export function updateLine(result, line) {
+    return {
+        type: UPDATE_LINE,
+        result,
+        line
+    }
+}
+
+export function updateTotal(result, total) {
+    return {
+        type: UPDATE_TOTAL,
+        result,
+        total
+    }
+}
+
+export function updateEffect(result, effect) {
+    return {
+        type: UPDATE_EFFECT,
+        result,
+        effect
+    }
 }
