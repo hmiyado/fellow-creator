@@ -6,7 +6,6 @@ import {
   FieldBody,
   TextArea,
   Select,
-  Container,
   Button
 } from 'bloomer';
 import 'bulma/css/bulma.css';
@@ -69,7 +68,7 @@ export default class FellowForm extends Component {
     });
 
     return (
-      <Container>
+      <div style={{ position: 'relative' }}>
         <FellowTemplate
           level={() => (
             <Input
@@ -189,7 +188,7 @@ export default class FellowForm extends Component {
           )}
         />
         <Button onClick={this.createFellow}>作成</Button>
-      </Container>
+      </div>
     );
   }
 }
