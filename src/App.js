@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Section, Container, Title, Button } from 'bloomer';
+import { Section, Container, Title } from 'bloomer';
 import 'bulma/css/bulma.css';
 import FellowFormContainer from './containers/FellowFormContainer';
 import FellowPreviewContainer from './containers/FellowPreviewContainer';

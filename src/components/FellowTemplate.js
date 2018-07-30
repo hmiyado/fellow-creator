@@ -1,6 +1,5 @@
 import './fellowTemplateStyle.css';
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import fellowTemplateSvg from './fellow-template.svg';
 
 const FellowTemplate = ({
@@ -22,7 +21,7 @@ const FellowTemplate = ({
 }) => {
   return (
     <div>
-      <img src={fellowTemplateSvg} />
+      <img src={fellowTemplateSvg} alt="fellow sheet" />
       <div className="levelContainer">{level()}</div>
       <div className="characterNameContainer">{characterName()}</div>
       <div className="portraitContainer">{portrait()}</div>

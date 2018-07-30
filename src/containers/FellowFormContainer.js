@@ -27,7 +27,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onLevelChange: level => dispatch(updateLevel(Number.parseInt(level))),
+    onLevelChange: level => dispatch(updateLevel(Number.parseInt(level, 10))),
     onPlayerNameChange: playerName => dispatch(updatePlayerName(playerName)),
     onCharacterNameChange: characterName =>
       dispatch(updateCharacterName(characterName)),
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onSelfIntroductionChange: selfIntroduction =>
       dispatch(updateSelfIntroduction(selfIntroduction)),
     onManaPointChange: manaPoint =>
-      dispatch(updateManaPoint(Number.parseInt(manaPoint))),
+      dispatch(updateManaPoint(Number.parseInt(manaPoint, 10))),
     onRequireReportChange: requireReport =>
       dispatch(updateRequireReport(requireReport.toLowerCase() === 'true')),
     onRequireExpsChange: requireExps =>
@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(updateFellowAction(result, fellowAction)),
     onLineChange: (result, line) => dispatch(updateLine(result, line)),
     onTotalChange: (result, total) =>
-      dispatch(updateTotal(result, Number.parseInt(total))),
+      dispatch(updateTotal(result, Number.parseInt(total, 10))),
     onEffectChange: (result, effect) => dispatch(updateEffect(result, effect))
   };
 };

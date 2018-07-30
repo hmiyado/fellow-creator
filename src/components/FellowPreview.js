@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import { Stage, Layer, Image, Text, Group } from 'react-konva';
-import Konva from 'konva';
 import fellowTemplateImage from './fellow-template.svg';
 
 export default class FellowPreview extends Component {
@@ -9,7 +7,7 @@ export default class FellowPreview extends Component {
     super(props);
     this.state = {
       templateImage: null,
-      portraitImage: new window.Image()
+      portraitImage: null
     };
   }
 
@@ -26,9 +24,12 @@ export default class FellowPreview extends Component {
       this.props.portrait !== '' &&
       this.props.portrait !== prevProps.portrait
     ) {
-      this.state.portraitImage.src = this.props.portrait;
-      this.state.portraitImage.onload = () => {
-        this.portraitImageNode.getLayer().batchDraw();
+      const image = new window.Image();
+      image.src = this.props.portrait;
+      image.onload = () => {
+        this.setState({
+          portraitImage: image
+        });
       };
     }
   }
@@ -39,7 +40,7 @@ export default class FellowPreview extends Component {
       const key = `rolled${rolled}`;
       const action = this.props.fellowActions[key];
       actions.push(
-        <Group y={25 * index} height={25}>
+        <Group key={key} y={25 * index} height={25}>
           <Text
             height={25}
             text={action.fellowAction}
@@ -134,7 +135,6 @@ export default class FellowPreview extends Component {
             fontSize={20}
           />
           <Image
-            ref={node => (this.portraitImageNode = node)}
             x={405}
             y={30}
             visible={this.props.portrait !== ''}

@@ -1,36 +1,23 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import {
-  Tile,
-  Box,
-  Tag,
   Field,
-  Label,
   Control,
   Input,
-  FieldLabel,
   FieldBody,
   TextArea,
   Select,
   Container,
-  Button,
-  Content,
-  Table
+  Button
 } from 'bloomer';
 import 'bulma/css/bulma.css';
 import FellowTemplate from './FellowTemplate';
-import domToImage from 'dom-to-image';
 
 export default class FellowForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     var actions = [];
     [7, 8, 9, 10].forEach(rolled => {
       actions.push(
-        <Field isHorizontal style={{ marginBottom: '0.1rem' }}>
+        <Field key={rolled} isHorizontal style={{ marginBottom: '0.1rem' }}>
           <FieldBody>
             <Field>
               <Control>
@@ -192,7 +179,6 @@ export default class FellowForm extends Component {
             <input
               type="file"
               accept="image/*"
-              isSize="small"
               style={{ fontSize: '0.5rem' }}
               onChange={e =>
                 this.props.onPortraitChange(
