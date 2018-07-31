@@ -78,9 +78,10 @@
 .portraitContainer {
     z-index: 2;
     position: absolute;
-    top: 45px;
-    left: 410px;
-    width: 155px;
+    top: 25px;
+    left: 400px;
+    width: 180px;
+    height: 90px;
 }
 
 .playerNameContainer {

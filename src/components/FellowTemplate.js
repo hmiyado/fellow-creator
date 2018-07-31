@@ -20,7 +20,7 @@ const FellowTemplate = ({
   actions
 }) => {
   return (
-    <div>
+    <div style={{ width: 595 }}>
       <img src={fellowTemplateSvg} alt="fellow sheet" />
       <div className="levelContainer">{level()}</div>
       <div className="characterNameContainer">{characterName()}</div>

@@ -6,7 +6,8 @@ import {
   FieldBody,
   TextArea,
   Select,
-  Button
+  Button,
+  Image
 } from 'bloomer';
 import 'bulma/css/bulma.css';
 import FellowTemplate from './FellowTemplate';
@@ -175,16 +176,31 @@ export default class FellowForm extends Component {
           )}
           actions={() => actions}
           portrait={() => (
-            <input
-              type="file"
-              accept="image/*"
-              style={{ fontSize: '0.5rem' }}
-              onChange={e =>
-                this.props.onPortraitChange(
-                  URL.createObjectURL(e.target.files[0])
-                )
-              }
-            />
+            <div
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                paddingLeft: '5px',
+                paddingRight: '5px'
+              }}>
+              <input
+                type="file"
+                accept="image/*"
+                style={{
+                  fontSize: '0.5rem',
+                  position: 'absolute',
+                  width: '100%',
+                  top: '50%',
+                  transform: 'translateY(-50%)'
+                }}
+                onChange={e =>
+                  this.props.onPortraitChange(
+                    URL.createObjectURL(e.target.files[0])
+                  )
+                }
+              />
+            </div>
           )}
         />
         <Button onClick={this.createFellow}>作成</Button>
