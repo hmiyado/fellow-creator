@@ -15,12 +15,24 @@ import FellowTemplate from './FellowTemplate';
 export default class FellowForm extends Component {
   render() {
     var actions = [];
+    const fieldStyle = { marginRight: '0.75rem', flexGrow: 1, flexShrink: 1 };
+    const controlStyle = { position: 'relative', textAlign: 'left' };
     [7, 8, 9, 10].forEach(rolled => {
       actions.push(
-        <Field key={rolled} isHorizontal style={{ marginBottom: '0.1rem' }}>
-          <FieldBody>
-            <Field>
-              <Control>
+        <div
+          key={rolled}
+          isHorizontal
+          style={{ marginBottom: '0.1rem', display: 'flex' }}>
+          {/*<FieldBody>*/}
+          <div
+            style={{
+              display: 'flex',
+              flexBasis: 0,
+              flexGrow: 5,
+              flexShrink: 1
+            }}>
+            <div style={fieldStyle}>
+              <div style={controlStyle}>
                 <Input
                   type="text"
                   style={{ fontSize: '0.5rem' }}
@@ -28,10 +40,10 @@ export default class FellowForm extends Component {
                     this.props.onFellowActionChange(rolled, e.target.value)
                   }
                 />
-              </Control>
-            </Field>
-            <Field>
-              <Control>
+              </div>
+            </div>
+            <div style={fieldStyle}>
+              <div style={controlStyle}>
                 <Input
                   type="text"
                   style={{ fontSize: '0.5rem' }}
@@ -39,10 +51,10 @@ export default class FellowForm extends Component {
                     this.props.onLineChange(rolled, e.target.value)
                   }
                 />
-              </Control>
-            </Field>
-            <Field style={{ width: 40, flexGrow: 0 }}>
-              <Control>
+              </div>
+            </div>
+            <div style={{ ...fieldStyle, width: 40, flexGrow: 0 }}>
+              <div style={controlStyle}>
                 <Input
                   type="number"
                   style={{ fontSize: '0.5rem' }}
@@ -50,10 +62,10 @@ export default class FellowForm extends Component {
                     this.props.onTotalChange(rolled, e.target.value)
                   }
                 />
-              </Control>
-            </Field>
-            <Field>
-              <Control>
+              </div>
+            </div>
+            <div style={fieldStyle}>
+              <div style={controlStyle}>
                 <Input
                   type="text"
                   style={{ fontSize: '0.5rem' }}
@@ -61,10 +73,10 @@ export default class FellowForm extends Component {
                     this.props.onEffectChange(rolled, e.target.value)
                   }
                 />
-              </Control>
-            </Field>
-          </FieldBody>
-        </Field>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     });
 
