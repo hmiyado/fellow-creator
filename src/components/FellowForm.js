@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Field,
-  Control,
-  Input,
-  FieldBody,
-  TextArea,
-  Select,
-  Button,
-  Image
-} from 'bloomer';
+import { Input, TextArea, Select, Button } from 'bloomer';
 import 'bulma/css/bulma.css';
 import FellowTemplate from './FellowTemplate';
 
@@ -19,11 +10,7 @@ export default class FellowForm extends Component {
     const controlStyle = { position: 'relative', textAlign: 'left' };
     [7, 8, 9, 10].forEach(rolled => {
       actions.push(
-        <div
-          key={rolled}
-          isHorizontal
-          style={{ marginBottom: '0.1rem', display: 'flex' }}>
-          {/*<FieldBody>*/}
+        <div key={rolled} style={{ marginBottom: '0.1rem', display: 'flex' }}>
           <div
             style={{
               display: 'flex',
