@@ -16,6 +16,11 @@ import FellowFormContainer from './containers/FellowFormContainer';
 import FellowPreviewContainer from './containers/FellowPreviewContainer';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.previewRef = React.createRef();
+  }
+
   render() {
     return (
       <div>
@@ -31,11 +36,20 @@ class App extends Component {
             <Columns isCentered>
               <Column>
                 <Subtitle>フォーム</Subtitle>
-                <FellowFormContainer />
+                <FellowFormContainer
+                  onDownload={e => {
+                    const url = this.previewRef.current.toDataUrl();
+
+                    const a = document.createElement('a');
+                    a.download = 'fellow.png';
+                    a.href = url;
+                    a.click();
+                  }}
+                />
               </Column>
               <Column>
                 <Subtitle>プレビュー</Subtitle>
-                <FellowPreviewContainer />
+                <FellowPreviewContainer ref={this.previewRef} />
               </Column>
             </Columns>
           </Container>

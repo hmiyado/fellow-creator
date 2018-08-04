@@ -17,7 +17,8 @@ import {
   UPDATE_LINE,
   UPDATE_TOTAL,
   UPDATE_EFFECT,
-  UPDATE_PORTRAIT
+  UPDATE_PORTRAIT,
+  UPDATE_FELLOW_IMAGE_URL
 } from './actions.js';
 
 function simpleValue(initialValue, actionType, key) {
@@ -31,6 +32,11 @@ function simpleValue(initialValue, actionType, key) {
   };
 }
 
+const fellowImageUrl = simpleValue(
+  '',
+  UPDATE_FELLOW_IMAGE_URL,
+  'fellowImageUrl'
+);
 const level = simpleValue(0, UPDATE_LEVEL, 'level');
 const playerName = simpleValue('', UPDATE_PLAYER_NAME, 'playerName');
 const characterName = simpleValue('', UPDATE_CHARACTER_NAME, 'characterName');
@@ -145,5 +151,6 @@ export default combineReducers({
   requireReport,
   requireExps,
   requirePay,
-  fellowActions
+  fellowActions,
+  fellowImageUrl
 });

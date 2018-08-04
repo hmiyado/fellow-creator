@@ -5,6 +5,7 @@ import fellowTemplateImage from './fellow-template.svg';
 export default class FellowPreview extends Component {
   constructor(props) {
     super(props);
+    this.stageRef = React.createRef();
     this.state = {
       templateImage: null,
       portraitImage: null
@@ -32,6 +33,14 @@ export default class FellowPreview extends Component {
         });
       };
     }
+
+    const fellowImageUrl = this.stageRef.current.getStage().toDataURL({
+      width: 595,
+      height: 420,
+      quality: 1,
+      pixelRatio: 2
+    });
+    this.props.onFellowImageUrlChange(fellowImageUrl);
   }
 
   render() {
@@ -75,7 +84,7 @@ export default class FellowPreview extends Component {
     });
 
     return (
-      <Stage width={595} height={420}>
+      <Stage ref={this.stageRef} width={595} height={420}>
         <Layer>
           <Image image={this.state.templateImage} />
           <Text

@@ -202,7 +202,9 @@ export default class FellowForm extends Component {
             </div>
           )}
         />
-        <Button onClick={this.createFellow}>作成</Button>
+        <Button download="fellow.png" href={this.props.fellowImageUrl}>
+          ダウンロード
+        </Button>
       </div>
     );
   }

@@ -16,6 +16,7 @@ export const UPDATE_LINE = 'UPDATE_LINE';
 export const UPDATE_TOTAL = 'UPDATE_TOTAL';
 export const UPDATE_EFFECT = 'UPDATE_EFFECT';
 export const UPDATE_PORTRAIT = 'UPDATE_PORTRAIT';
+export const UPDATE_FELLOW_IMAGE_URL = 'UPDATE_FELLOW_IMAGE_URL';
 
 export function updateLevel(level) {
   return {
@@ -141,5 +142,12 @@ export function updatePortrait(portrait) {
   return {
     type: UPDATE_PORTRAIT,
     portrait
+  };
+}
+
+export function updateFellowImageUrl(fellowImageUrl) {
+  return {
+    type: UPDATE_FELLOW_IMAGE_URL,
+    fellowImageUrl
   };
 }
